@@ -1,0 +1,24 @@
+syntax = "proto3";
+
+option java_multiple_files = true;
+option java_package = "com.example.signaling";
+option java_outer_classname = "SignalingProto";
+
+// Service definition for signaling
+service SignalingService {
+    rpc exchangeSDP (SDPRequest) returns (SDPResponse);
+}
+
+// Message containing SDP offer/answer
+message SDPRequest {
+    string type = 1;
+    string sdp = 2;
+    string senderId = 3;
+    string receiverId = 4;
+}
+
+// Response message for SDP exchange
+message SDPResponse {
+    string status = 1;
+    string message = 2;
+}
